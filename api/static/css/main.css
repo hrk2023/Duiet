@@ -212,7 +212,14 @@ hr {
   margin: 2rem 0; }
   hr.major {
     margin: 4rem 0; }
-
+.ntf{
+  color: #6091c1 !important;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+}
+.ntf > li > a{
+  text-decoration: none !important;
+}
 input, select, textarea {
   color: #555555; }
 
@@ -2009,7 +2016,6 @@ ul.icons {
     opacity: 0.6;
     position: absolute;
     top: 0;
-    webkit-linear-gradientidth: 100%;
     width: 100%;
     z-index: 1; }
   #banner.small {
@@ -2781,7 +2787,6 @@ body {
     right: 0;
     text-align: right;
     top: 0;
-    vertical-align: middle;
     width: 7rem; }
     #menu .close:before {
       -moz-osx-font-smoothing: grayscale;

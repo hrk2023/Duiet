@@ -21,10 +21,14 @@ def create_blueprint(cluster):
 
     @data.route("/<pdf>",methods=['GET'])
     def get_pdf(pdf):
-        file = "{}\\{}".format(os.environ.get("UPLOAD_BASE_DIR"),pdf)
+        file = os.path.join(os.environ.get("UPLOAD_BASE_DIR"),pdf)
         if os.path.isfile(file):
             return send_file(file)
-        return redirect(url_for('data.index'))
+        return redirect(url_for('data.file_access_error'))
+
+    @data.route("/error",methods=['GET'])
+    def file_access_error():
+        return "<h2>File Not Found</h2>"
 
     @data.route("/upload",methods=['POST'])
     def add_files():
@@ -39,7 +43,7 @@ def create_blueprint(cluster):
 
             filename = secure_filename(pdf.filename)
             # UPLOAD DESTINATION
-            filename = "{}\\{}".format(os.environ.get("UPLOAD_BASE_DIR"),filename)
+            filename = os.path.join(os.environ.get("UPLOAD_BASE_DIR"),filename)
             pdf.save(filename)
 
             data = {

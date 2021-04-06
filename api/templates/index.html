@@ -15,14 +15,18 @@
 							<h3>General</h3>
 						</header>
 						<p>
-							<marquee width="60%" direction="up" height="100px"scrollamount="1">
+							<marquee class="ntf" width="100%" direction="up" height="100px" scrollamount="1">
 								{% for gen in general %}
 									<li>
-										<a href="{{url_for('data.get_pdf',pdf=gen.doc_link)}}" target="_blank">{{gen.title}}</a>
+										<a href="{{url_for('data.get_pdf',pdf=gen.doc_link)}}" target="_blank"
+										style="color: #6091c1;font-family: 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: 600;
+										text-decoration: none;">{{gen.title}}
+										<img src="../static/images/newicon.gif" alt="new" class="pull-right">
+										</a>
 									</li>
 								{% endfor %}
 							</marquee>
-					</p>
+						</p>
 					</div>
 				</section>
 
@@ -35,10 +39,14 @@
 							<h3>Examination</h3>
 						</header>
 						<p>
-							<marquee width="60%" direction="up" height="100px"scrollamount="1">
+							<marquee class="ntf" width="100%" direction="up" height="100px"scrollamount="1">
 							{% for exm in exam %}
 									<li>
-										<a href="{{url_for('data.get_pdf',pdf=exm.doc_link)}}" target="_blank">{{exm.title}}</a>
+										<a href="{{url_for('data.get_pdf',pdf=exm.doc_link)}}" target="_blank"
+										style="color: #6091c1;font-family: 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: 600;
+										text-decoration: none;">{{exm.title}}
+										<img src="../static/images/newicon.gif" alt="new" class="pull-right">
+										</a>
 									</li>
 								{% endfor %}
                             </marquee>
@@ -52,17 +60,21 @@
 							<h3>Admission</h3>
 						</header>
 						<p>
-							<marquee width="60%" direction="up" height="100px"scrollamount="1">
+							<marquee class="ntf" width="100%" direction="up" height="100px" scrollamount="1">
 								{% for admm in adm %}
 									<li>
-										<a href="{{url_for('data.get_pdf',pdf=admm.doc_link)}}" target="_blank">{{admm.title}}</a>
+										<a href="{{url_for('data.get_pdf',pdf=admm.doc_link)}}" target="_blank"
+										style="color: #6091c1;font-family: 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: 600;
+										text-decoration: none;">{{admm.title}}
+										<img src="../static/images/newicon.gif" alt="new" class="pull-right">
+										</a>
 									</li>
 								{% endfor %}
 							</marquee>
 						</p>
 					</div>
 				</section>
-				
+			</div>
 		</div>
 	</section>
 
