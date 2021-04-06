@@ -2,7 +2,8 @@ from dotenv import load_dotenv
 from os import path,environ
 
 BASE_DIR = path.abspath(path.dirname(__file__))
-# load_dotenv(path.join(BASE_DIR,'.env'))
+load_dotenv(path.join(BASE_DIR,'.env'))
+print(path.join(BASE_DIR,'.env'))
 class Config:
     SECRET_KEY = environ.get("SECRET_KEY")
     TESTING = False

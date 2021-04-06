@@ -1,8 +1,9 @@
 from flask import (Flask,jsonify,Blueprint,request,
-flash,render_template,redirect,url_for,send_from_directory)
+flash,render_template,redirect,url_for,send_file)
 from api.daos.notification_daos import Datadaos
 from werkzeug.utils import secure_filename
 from api import config
+import os
 import uuid
 import datetime
 
@@ -20,11 +21,10 @@ def create_blueprint(cluster):
 
     @data.route("/<pdf>",methods=['GET'])
     def get_pdf(pdf):
-        dirrname = "{}\\upload".format(config.BASE_DIR)
-
-        return send_from_directory(directory=dirrname,
-                           filename=pdf,
-                           mimetype='application/pdf')
+        file = "{}\\{}".format(os.environ.get("UPLOAD_BASE_DIR"),pdf)
+        if os.path.isfile(file):
+            return send_file(file)
+        return redirect(url_for('data.index'))
 
     @data.route("/upload",methods=['POST'])
     def add_files():
@@ -39,7 +39,7 @@ def create_blueprint(cluster):
 
             filename = secure_filename(pdf.filename)
             # UPLOAD DESTINATION
-            filename = "{}\\upload\\{}".format(config.BASE_DIR,filename)
+            filename = "{}\\{}".format(os.environ.get("UPLOAD_BASE_DIR"),filename)
             pdf.save(filename)
 
             data = {
