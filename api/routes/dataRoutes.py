@@ -66,7 +66,7 @@ def create_blueprint(cluster):
     def contact():
         return render_template('ContactUs.html')
 
-    @data.route("/administration",methods=['GET'])
+    @data.route("/adm",methods=['GET'])
     def adm():
         return render_template('administration.html')
 

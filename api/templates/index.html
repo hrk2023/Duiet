@@ -1,92 +1,78 @@
 {% extends 'layout2.html' %}
 {% block content %}
-	<h2 id="Notification">Notifications</h2>
 
-	<!-- Highlights -->
-	
-	<section class="wrapper" id="noti">
-		<div class="inner">
-		
-			<div class="highlights">
-				<section>
-					<div class="content">
-						<header>
-							<a href="#" class="icon fa-vcard-o"><span class="label">Icon</span></a>
-							<h3>General</h3>
-						</header>
-						<p>
-							<marquee class="ntf" width="100%" direction="up" height="100px" scrollamount="1">
-								{% for gen in general %}
-									<li>
-										<a href="{{url_for('data.get_pdf',pdf=gen.doc_link)}}" target="_blank"
-										style="color: #6091c1;font-family: 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: 600;
-										text-decoration: none;">{{gen.title}}
-										<img src="../static/images/newicon.gif" alt="new" class="pull-right">
-										</a>
-									</li>
-								{% endfor %}
-							</marquee>
-						</p>
-					</div>
-				</section>
-
-
-
-				<section>
-					<div class="content">
-						<header>
-							<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-							<h3>Examination</h3>
-						</header>
-						<p>
-							<marquee class="ntf" width="100%" direction="up" height="100px"scrollamount="1">
-							{% for exm in exam %}
-									<li>
-										<a href="{{url_for('data.get_pdf',pdf=exm.doc_link)}}" target="_blank"
-										style="color: #6091c1;font-family: 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: 600;
-										text-decoration: none;">{{exm.title}}
-										<img src="../static/images/newicon.gif" alt="new" class="pull-right">
-										</a>
-									</li>
-								{% endfor %}
-                            </marquee>
-						</p>
-					</div>
-				</section>
-				<section>
-					<div class="content">
-						<header>
-							<a href="#" class="icon fa-floppy-o"><span class="label">Icon</span></a>
-							<h3>Admission</h3>
-						</header>
-						<p>
-							<marquee class="ntf" width="100%" direction="up" height="100px" scrollamount="1">
-								{% for admm in adm %}
-									<li>
-										<a href="{{url_for('data.get_pdf',pdf=admm.doc_link)}}" target="_blank"
-										style="color: #6091c1;font-family: 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: 600;
-										text-decoration: none;">{{admm.title}}
-										<img src="../static/images/newicon.gif" alt="new" class="pull-right">
-										</a>
-									</li>
-								{% endfor %}
-							</marquee>
-						</p>
-					</div>
-				</section>
-			</div>
+<!-- NOTIFICATIONS -->
+<div class="container mt-5 text-center">
+	<div class="ntf-heading">NOTIFICATIONS</div>
+	<div class="card-deck mt-5">
+	  <div class="card">
+		<div class="card-body">
+		  <h3 class="card-title">General</h3>
 		</div>
-	</section>
-
-
-
-	<!-- CTA -->
-	<section id="cta" class="wrapper">
-		<div class="inner">
-			<h2>Some information</h2>
-			<p>highlightable info</p>
+		<div>
+			<marquee class="ntf" width="100%" direction="up" height="200px" scrollamount="1">
+				{% for gen in general %}
+					<li style="list-style-type: none;width: 80%;margin: auto;text-align: center;
+					margin-bottom: 10px;">
+						<a href="{{url_for('data.get_pdf',pdf=gen.doc_link)}}" target="_blank"
+						style="color: #6091c1;font-family: 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: 600;
+						text-decoration: none;font-size: 16px;display:inline-flex">{{gen.title}}
+						<img src="../static/images/newicon.gif" alt="new" class="pull-right"
+						style="margin-left: 10px;width: 30px; object-fit: contain;">
+						</a>
+					</li>
+				{% endfor %}
+			</marquee>
 		</div>
-	</section>
+	  </div>
+	  <div class="card">
+		<div class="card-body">
+		  <h3 class="card-title">Examination</h3>
+		</div>
+		<div>
+			<marquee class="ntf" width="100%" direction="up" height="200px"scrollamount="1">
+				{% for exm in exam %}
+					<li style="list-style-type: none;width: 80%;margin: auto;text-align: center;
+					margin-bottom: 10px;">
+						<a href="{{url_for('data.get_pdf',pdf=exm.doc_link)}}" target="_blank"
+						style="color: #6091c1;font-family: 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: 600;
+						text-decoration: none;font-size: 16px;display:inline-flex">{{exm.title}}
+						<img src="../static/images/newicon.gif" alt="new" class="pull-right"
+						style="margin-left: 10px;width: 30px; object-fit: contain;">
+						</a>
+					</li>
+				{% endfor %}
+			</marquee>
+		</div>
+	  </div>
+	  <div class="card">
+		<div class="card-body">
+		  <h3 class="card-title">Admission</h3>
+		</div>
+		<div>
+			<marquee class="ntf" width="100%" direction="up" height="200px" scrollamount="1">
+				{% for admm in adm %}
+					<li style="list-style-type: none;width: 80%;margin: auto;text-align: center;
+					margin-bottom: 10px;">
+						<a href="{{url_for('data.get_pdf',pdf=admm.doc_link)}}" target="_blank"
+						style="color: #6091c1;font-family: 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: 600;
+						text-decoration: none;font-size: 16px;display:inline-flex">{{admm.title}}
+						<img src="../static/images/newicon.gif" alt="new" class="pull-right"
+						style="margin-left: 10px;width: 30px; object-fit: contain;">
+						</a>
+					</li>
+				{% endfor %}
+			</marquee>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+	<!-- BANNER 2 -->
+    <div class="container-fluid text-center jumbotron mt-5 cta">
+		<h3>SOME INFORMATION</h3>
+		<h6>highlightable info</h6>
+	</div>
 
 
 	<!-- Testimonials -->
