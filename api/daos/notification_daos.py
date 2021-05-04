@@ -25,6 +25,18 @@ class Datadaos:
             return result
         return False
 
+    def get_notifications_by_title(self,title):
+        cluster = self.cluster.db
+        collections = cluster.collection_names()
+        for i in collections:
+            collection = cluster[i]
+            response = collection.find_one({"title": 
+            {'$regex' : '^{}'.format(title),'$options' : 'i'}
+            })
+            if response:
+                return response["doc_link"]
+        return False
+
     def post_new_notification(self,data,col):
         title = data["title"]
         collection = self.check_ntf(title,col)

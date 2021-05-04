@@ -57,6 +57,27 @@ def create_blueprint(cluster):
             flash('Notification cannot be added','error')
             return redirect(url_for('admin.notification_page'))
 
+    @data.route("/d/<title>",methods=['GET'])
+    def delete_ntf(title):
+        try:
+            response = daos.get_notifications_by_title(title)
+            if response:
+                filename = os.path.join(os.environ.get("UPLOAD_BASE_DIR"),response)
+                os.remove(filename)
+
+        except Exception as e:
+            with open('error.log','a') as fptr:
+                fptr.write(f"Error: {e}\n")
+        finally:
+            response = daos.delete_notification(title)
+            if response:
+                flash('Notification deleted successfully','success')
+                return redirect(url_for('admin.notification_page'))
+            flash('Notification cannot be deleted','error')
+            return redirect(url_for('admin.notification_page'))
+
+
+
 
     @data.route("/about",methods=['GET'])
     def about():
