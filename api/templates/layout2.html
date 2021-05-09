@@ -274,22 +274,7 @@
 			height: 2px;
 			background-color: #444444;
 		}
-		#navbarDropdownMenuP{
-			width: 250px;
-			position: absolute;
-			top: 60px;
-			padding-bottom: 10px;
-			background-color: white;
-		}
-		#navbarUG, #navbarPG{
-			padding-left: 15px;
-		}
-		@media screen and (max-width: 800px){
-			#navbarDropdownMenuP{
-				position: relative;
-				top: 5px;
-			}
-		}
+		
 		@media screen and (max-width: 440px){
 			.jumbotron{
 				font-size: 28px;
@@ -350,46 +335,10 @@
             </div>
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link"
-              id="navbarDropdownMenuPr"
-			  ontouchend = "DisplayLevel1()"
-			  onclick = "DisplayLevel1()"
-			  style="cursor: pointer;padding-right: 15px;"
-            >
+            <a class="nav-link" href="/programmes">
               Programmes
             </a>
-            <div id="navbarDropdownMenuP" style="display: none;">
-				
-				<a class="dropdown-item btn btn-transparent"
-					id="navbarDropdownUG"
-					ontouchend = "DisplayLevel2_0()"
-					onclick = "DisplayLevel2_0()"
-					>
-						UG Programmes
-			
-					<ul id ="navbarUG" style="display: none;">
-						<!-- Dropdown menu links -->
-						<a class="dropdown-item" href="/programmes">B.A.(General)</a>
-						<a class="dropdown-item" href="/programmes">B.A.(Honours)</a>
-						<a class="dropdown-item" href="/programmes">B.Com.</a>
-						<a class="dropdown-item" href="/programmes">BCA</a>
-					</ul>
-				</a>
-				<a class="dropdown-item btn btn-transparent"
-					id="navbarDropdownPG"
-					ontouchend = "DisplayLevel2_1()"
-					onclick = "DisplayLevel2_1()"
-					>
-						PG Programmes
-					<ul id="navbarPG" style="display: none;">
-						<!-- Dropdown menu links -->
-						<a class="dropdown-item" href="/programmes">M.A.</a>
-						<a class="dropdown-item" href="/programmes">M.A./M.Sc. Mathematics</a>
-						<a class="dropdown-item" href="/programmes">M.Com.</a>
-					</ul>
-				</a>
-            </div>
+            
           </li>
           <li class="nav-item dropdown">
             <a
@@ -498,44 +447,6 @@
 		</div>
 	  </footer>
   
-	  
-	<script>
-		
-		function DisplayLevel1(){
-			let ll = document.getElementById("navbarDropdownMenuP");
-			if(ll.style.display === "none"){
-				ll.style.display = "block";
-			}else{
-				ll.style.display = "none";
-			}
-		}
-		function DisplayLevel2_0(){
-			let ll = document.getElementById("navbarUG");
-			if(ll.style.display === "none"){
-				let ld = document.getElementById("navbarPG");
-				ld.style.display = "none";
-				ll.style.display = "block";
-			}else{
-				ll.style.display = "none";
-			}
-		}
-		function DisplayLevel2_1(){
-			let ll = document.getElementById("navbarPG");
-			if(ll.style.display === "none"){
-				let ld = document.getElementById("navbarUG");
-				ld.style.display = "none";
-				ll.style.display = "block";
-			}else{
-				ll.style.display = "none";
-			}
-		}
-		function CloseAll(){
-			let ll = document.getElementById("navbarDropdownMenuP");
-			if(!ll.style.display === "none"){
-				ll.style.display = "none";
-			}
-		}
-	</script>
 
 </body>
 
