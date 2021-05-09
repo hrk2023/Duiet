@@ -16,6 +16,9 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+	<script 
+		src="https://raw.githubusercontent.com/dallaslu/bootstrap-5-multi-level-dropdown/master/bootstrap5-dropdown-ml-hack.js">
+	</script>
 	<script
 		src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -54,8 +57,8 @@
 		.jumbotron{
 			background-color: transparent;
 			background-image: url('https://i.imgur.com/omGTIRV.jpg');
-			height: 16rem !important;
-  			min-height: 16rem;
+			height: 12rem !important;
+  			min-height: 12rem;
 			color: #cfcfcf;
 			font-size: 40px;
 			font-weight: 600;
@@ -255,15 +258,53 @@
 			color: #111;
 			font-weight: 400;
 		}
+		.imp-links{
+			width: 90%;
+			margin: 50px auto;
+			display: flex;
+			justify-content: space-around;
+		}
+		.imp{
+			cursor: pointer;
+			color: #6091c1;
+		}
+		.hrule{
+			width: 30%;
+			margin: auto;
+			height: 2px;
+			background-color: #444444;
+		}
+		#navbarDropdownMenuP{
+			width: 250px;
+			position: absolute;
+			top: 60px;
+			padding-bottom: 10px;
+			background-color: white;
+		}
+		#navbarUG, #navbarPG{
+			padding-left: 15px;
+		}
+		@media screen and (max-width: 800px){
+			#navbarDropdownMenuP{
+				position: relative;
+				top: 5px;
+			}
+		}
 		@media screen and (max-width: 440px){
 			.jumbotron{
 				font-size: 28px;
 				height: 14rem !important;
 			}
+			.ntf-heading{
+				font-size: 30px;
+			}
 		}
 	</style>
   </head>
-  <body>
+  <body
+ 	onclick="CloseAll()"
+	
+  >
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="https://dibru.ac.in/"
@@ -308,25 +349,46 @@
               <a class="dropdown-item" href="#">Admission</a>
             </div>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item">
             <a
-              class="nav-link dropdown-toggle"
-              href="/programmes"
-              id="navbarDropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+              class="nav-link"
+              id="navbarDropdownMenuPr"
+			  ontouchend = "DisplayLevel1()"
+			  onclick = "DisplayLevel1()"
+			  style="cursor: pointer;padding-right: 15px;"
             >
               Programmes
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/programmes">M.A.</a>
-              <a class="dropdown-item" href="/programmes">M.A./M.Sc. Mathematics</a>
-              <a class="dropdown-item" href="/programmes">B.A.(General)</a>
-              <a class="dropdown-item" href="/programmes">B.A.(Honours)</a>
-              <a class="dropdown-item" href="/programmes">B.Com.</a>
-              <a class="dropdown-item" href="/programmes">M.Com.</a>
-              <a class="dropdown-item" href="/programmes">BCA</a>
+            <div id="navbarDropdownMenuP" style="display: none;">
+				
+				<a class="dropdown-item btn btn-transparent"
+					id="navbarDropdownUG"
+					ontouchend = "DisplayLevel2_0()"
+					onclick = "DisplayLevel2_0()"
+					>
+						UG Programmes
+			
+					<ul id ="navbarUG" style="display: none;">
+						<!-- Dropdown menu links -->
+						<a class="dropdown-item" href="/programmes">B.A.(General)</a>
+						<a class="dropdown-item" href="/programmes">B.A.(Honours)</a>
+						<a class="dropdown-item" href="/programmes">B.Com.</a>
+						<a class="dropdown-item" href="/programmes">BCA</a>
+					</ul>
+				</a>
+				<a class="dropdown-item btn btn-transparent"
+					id="navbarDropdownPG"
+					ontouchend = "DisplayLevel2_1()"
+					onclick = "DisplayLevel2_1()"
+					>
+						PG Programmes
+					<ul id="navbarPG" style="display: none;">
+						<!-- Dropdown menu links -->
+						<a class="dropdown-item" href="/programmes">M.A.</a>
+						<a class="dropdown-item" href="/programmes">M.A./M.Sc. Mathematics</a>
+						<a class="dropdown-item" href="/programmes">M.Com.</a>
+					</ul>
+				</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -398,18 +460,11 @@
     {% block content %}{% endblock %}
     
     <!-- FOOTER -->
-    <footer style="font-size: 1rem" class="text-gray-600 body-font">
+    <footer style="font-size: 1rem" class="text-gray-600 body-font bg-gray-900">
 		<div
-		  class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col"
-		>
+		  class="container px-5 py-12 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
 		  <div
-			class="w-64 flex-shrink-0  mx-auto text-center flex justify-center"
-		  >
-			<a
-			  class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
-			>
-			  <span class="ml-3 text-xl"><h2>FOOTER</h2></span>
-			</a>
+			class="w-64 flex-shrink-0  mx-auto text-center flex justify-center">
 		  </div>
 		  <div
 			class="flex-grow flex justify-center flex-wrap -mb-10 md:mt-0 mt-10 md:text-left text-center">
@@ -427,11 +482,11 @@
 			</div>
 			<div class="lg:w-1/4 md:w-1/2 w-full px-4">
 			  <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-			  Social Media Handles
+			  Other Links
 			  </h2>
 			  <nav class="list-none mb-10">
 				<!-- <li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li> -->
-				<li><a href="https://www.facebook.com/ddelibrary"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+				<!-- <li><a href="https://www.facebook.com/ddelibrary"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li> -->
 				<!-- <li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
 				<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li> -->
 			  </nav>
@@ -444,14 +499,43 @@
 	  </footer>
   
 	  
-
-	<!-- Scripts -->
-	<!-- <script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script> -->
-    <!-- <script src="assets/js/navfunc.js"></script> -->
+	<script>
+		
+		function DisplayLevel1(){
+			let ll = document.getElementById("navbarDropdownMenuP");
+			if(ll.style.display === "none"){
+				ll.style.display = "block";
+			}else{
+				ll.style.display = "none";
+			}
+		}
+		function DisplayLevel2_0(){
+			let ll = document.getElementById("navbarUG");
+			if(ll.style.display === "none"){
+				let ld = document.getElementById("navbarPG");
+				ld.style.display = "none";
+				ll.style.display = "block";
+			}else{
+				ll.style.display = "none";
+			}
+		}
+		function DisplayLevel2_1(){
+			let ll = document.getElementById("navbarPG");
+			if(ll.style.display === "none"){
+				let ld = document.getElementById("navbarUG");
+				ld.style.display = "none";
+				ll.style.display = "block";
+			}else{
+				ll.style.display = "none";
+			}
+		}
+		function CloseAll(){
+			let ll = document.getElementById("navbarDropdownMenuP");
+			if(!ll.style.display === "none"){
+				ll.style.display = "none";
+			}
+		}
+	</script>
 
 </body>
 
