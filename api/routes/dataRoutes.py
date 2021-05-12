@@ -99,4 +99,8 @@ def create_blueprint(cluster):
     def recognition():
         return render_template('recognition.html')
 
+    @data.route("/syllabus",methods=['GET'])
+    def syllabus():
+        return render_template('syllabus.html')
+
     return data
