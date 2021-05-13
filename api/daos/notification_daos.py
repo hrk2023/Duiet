@@ -48,15 +48,20 @@ class Datadaos:
             return col.insert_one(data)
 
     def delete_notification(self,title):
-        cluster = self.cluster.db
-        collections = cluster.collection_names()
-        for i in collections:
-            collection = cluster[i]
-            response = collection.find_one({"title": 
-            {'$regex' : '^{}'.format(title),'$options' : 'i'}
-            })
-            if response:
-                result = collection.delete_one({"title" : title})
-                if result:
-                    return True
-        return False
+        try: 
+            cluster = self.cluster.db
+            collections = cluster.collection_names()
+            for i in collections:
+                collection = cluster[i]
+                response = collection.find_one({"title": 
+                {'$regex' : '^{}'.format(title),'$options' : 'i'}
+                })
+                if response:
+                    result = collection.delete_one({"title" : title})
+                    if result:
+                        return True
+            return False
+        except Exception as e:
+            with open('error.log','a') as fptr:
+                fptr.write(f"Error: {e}\n")
+            return False

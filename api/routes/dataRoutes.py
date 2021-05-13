@@ -43,12 +43,13 @@ def create_blueprint(cluster):
 
             filename = secure_filename(pdf.filename)
             # UPLOAD DESTINATION
+            upload_filename = filename
             filename = os.path.join(os.environ.get("UPLOAD_BASE_DIR"),filename)
             pdf.save(filename)
 
             data = {
                 "title" : title,
-                "doc_link" : pdf.filename,
+                "doc_link" : upload_filename,
             }
             response = daos.post_new_notification(data,category)
             if response:
@@ -68,13 +69,16 @@ def create_blueprint(cluster):
         except Exception as e:
             with open('error.log','a') as fptr:
                 fptr.write(f"Error: {e}\n")
+
         finally:
+            # Delete Database Data for the corresponding entry    
             response = daos.delete_notification(title)
             if response:
                 flash('Notification deleted successfully','success')
                 return redirect(url_for('admin.notification_page'))
             flash('Notification cannot be deleted','error')
             return redirect(url_for('admin.notification_page'))
+        
 
 
 
@@ -102,5 +106,9 @@ def create_blueprint(cluster):
     @data.route("/syllabus",methods=['GET'])
     def syllabus():
         return render_template('syllabus.html')
+    
+    @data.route("/assignment",methods=['GET'])
+    def assignment():
+        return render_template('assignment.html')
 
     return data
