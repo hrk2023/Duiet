@@ -107,6 +107,10 @@ def create_blueprint(cluster):
     def syllabus():
         return render_template('syllabus.html')
     
+    @data.route("/eslm",methods=['GET'])
+    def eslm():
+        return render_template('eslm.html')
+    
     @data.route("/assignment",methods=['GET'])
     def assignment():
         return render_template('assignment.html')
