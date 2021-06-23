@@ -78,10 +78,6 @@ def create_blueprint(cluster):
                 return redirect(url_for('admin.notification_page'))
             flash('Notification cannot be deleted','error')
             return redirect(url_for('admin.notification_page'))
-        
-
-
-
 
     @data.route("/about",methods=['GET'])
     def about():

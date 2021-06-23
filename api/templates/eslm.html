@@ -1,4 +1,6 @@
 {% extends 'layout2.html' %}
+{% from "macros.html" import pdf_section_formatter %}
+{% from "macros_2.html" import pdf_subsection_formatter %}
 
 {% block content %}
 <div class="w-3/4 mx-auto text-center pt-8">
@@ -182,46 +184,88 @@
     <h2>UG COURSES</h2>
 </div>
 <div class="w-full flex space-between mx-auto flex-wrap">
-    <div class="md:w-1/2 sm:w-full">
-        <div class="recog w-3/4 mx-auto mt-24">
-            <h3>B.A. General (1st Semester)</h3>
-            <h5>
-                <a href="pdf/BA_General_Alt_English_ALTE_101_Elective_1st_Semester.pdf" target="_blank">
-                    BA General Alt English ALTE 101 Elective
-                </a>
-            </h5>
-            <h5>
-                <a href="pdf/BA_General_Assamese_ASMG_101_Elective_1st_Semester.pdf" target="_blank">
-                    BA General Assamese ASMG 101 Elective
-                </a>
-            </h5>
-            <h5>
-                <a href="pdf/BA_General_English_ENGG_101_Compulsory_1st_Semester.pdf" target="_blank">
-                    BA General English ENGG 101 Compulsory
-                </a>
-            </h5>
-        </div>
-    </div>
-    <div class="md:w-1/2 sm:w-full">
-        <div class="recog w-3/4 mx-auto mt-24">
-            <h3>B.A. Honours (1st Semester)</h3>
-            <h5>
-                <a href="pdf/BA_Honours_Assamese_ASMM_1011st_Semester.pdf" target="_blank">
-                    BA Honours Assamese ASMM 101
-                </a>
-            </h5>
-            <h5>
-                <a href="pdf/BA_Honours_Economics_ECOM_101_1st_Semester.pdf" target="_blank">
-                    BA Honours Economics ECOM 101
-                </a>
-            </h5>
-            <h5>
-                <a href="pdf/BA_Honours_Political_Science_PSCM_101_1st_Semester.pdf" target="_blank">
-                    BA Honours Political Science PSCM 101
-                </a>
-            </h5>
-        </div>
-    </div>
+
+    <!-- B.A General -->
+
+    {{ pdf_section_formatter('B.A. General (1st Semester)', 
+        pdf_subsection_formatter(
+            'BA_General_Alt_English_ALTE_101_Elective_1st_Semester.pdf',
+            'BA General Alt English ALTE 101 Elective'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_Assamese_ASMG_101_Elective_1st_Semester.pdf',
+            'BA General Assamese ASMG 101 Elective'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_English_ENGG_101_Compulsory_1st_Semester.pdf',
+            'BA General English ENGG 101 Compulsory'
+        )
+    )}}
+
+    <!-- B.A Honours Assamese -->
+
+    {{ pdf_section_formatter('B.A. Honours Assamese (1st Semester)', 
+        pdf_subsection_formatter(
+            'BA_Honours_Assamese_ASMM_1011st_Semester.pdf',
+            'BA Honours Assamese ASMM 101'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_Alt_English_ALTE_101_Elective_1st_Semester.pdf',
+            'BA General Alt English ALTE 101 Elective'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_Assamese_ASMG_101_Elective_1st_Semester.pdf',
+            'BA General Assamese ASMG 101 Elective'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_English_ENGG_101_Compulsory_1st_Semester.pdf',
+            'BA General English ENGG 101 Compulsory'
+        )
+    )}}
+
+    <!-- B.A Honours Economics -->
+
+    {{ pdf_section_formatter('B.A. Honours Economics (1st Semester)', 
+        pdf_subsection_formatter(
+            'BA_Honours_Economics_ECOM_101_1st_Semester.pdf',
+            'BA Honours Economics ECOM 101'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_Alt_English_ALTE_101_Elective_1st_Semester.pdf',
+            'BA General Alt English ALTE 101 Elective'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_Assamese_ASMG_101_Elective_1st_Semester.pdf',
+            'BA General Assamese ASMG 101 Elective'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_English_ENGG_101_Compulsory_1st_Semester.pdf',
+            'BA General English ENGG 101 Compulsory'
+        )
+    )}}
+
+    <!-- B.A Honours Political Science -->
+
+    {{ pdf_section_formatter('B.A. Honours Political Science (1st Semester)', 
+        pdf_subsection_formatter(
+            'BA_Honours_Political_Science_PSCM_101_1st_Semester.pdf',
+            'BA Honours Political Science PSCM 101'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_Alt_English_ALTE_101_Elective_1st_Semester.pdf',
+            'BA General Alt English ALTE 101 Elective'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_Assamese_ASMG_101_Elective_1st_Semester.pdf',
+            'BA General Assamese ASMG 101 Elective'
+        ),
+        pdf_subsection_formatter(
+            'BA_General_English_ENGG_101_Compulsory_1st_Semester.pdf',
+            'BA General English ENGG 101 Compulsory'
+        )
+    )}}
+
+
     <div class="md:w-1/2 sm:w-full">
         <div class="recog w-3/4 mx-auto mt-24">
             <h3>B.Com General (1st Semester)</h3>
