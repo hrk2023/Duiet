@@ -7,5 +7,5 @@ class Formatter():
                 "title" : data["title"],
                 "doc_link" : data["doc_link"]
             }
-            output.append(notification_data)
+            output.insert(0, notification_data)
         return output
